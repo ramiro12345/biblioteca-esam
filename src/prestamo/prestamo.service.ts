@@ -15,19 +15,21 @@ export class PrestamoService {
     return this._prestamoRepository.save(nuevoLibro);
   }
 
-  findAll() {
-    return `This action returns all prestamo`;
+  findAll(): Promise<Prestamo[]> {
+    return this._prestamoRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} prestamo`;
+  findOne(id: number): Promise<Prestamo> {
+    return this._prestamoRepository.findOneBy({ id });
   }
 
-  update(id: number, updatePrestamoDto: UpdatePrestamoDto) {
-    return `This action updates a #${id} prestamo`;
+  async update(id: number, updatePrestamoDto: UpdatePrestamoDto): Promise<Prestamo> {
+    await this._prestamoRepository.update(id, updatePrestamoDto);
+
+    return this.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} prestamo`;
+  async remove(id: number) {
+    await this._prestamoRepository.delete(id);
   }
 }

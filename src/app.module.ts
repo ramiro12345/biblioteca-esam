@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { LibroModule } from './libro/libro.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Libro } from './libro/entities/libro.entity';
@@ -20,8 +18,6 @@ import { Prestamo } from './prestamo/entities/prestamo.entity';
       synchronize: true, // ¡Solo para desarrollo!
     }),
     LibroModule,
-    PrestamoModule],
-  controllers: [AppController],
-  providers: [AppService],
+    PrestamoModule]
 })
 export class AppModule {}

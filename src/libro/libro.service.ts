@@ -31,7 +31,5 @@ export class LibroService {
 
   public async remove(id: number): Promise<any> {
     await this.libroRepository.delete(id);
-
-    return { message: 'Eliminado exitosamente' };
   }
 }
